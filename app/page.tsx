@@ -1,12 +1,8 @@
-import Image from 'next/image'
-import { Inter } from '@next/font/google'
-import styles from './page.module.css'
-
-const inter = Inter({ subsets: ['latin'] })
+import styles from "./page.module.css";
 
 export default function Home() {
   return (
-    <>
+    <main className="grid place-items-center">
       <div className={styles.grid}>
         <a href="./authentication" className={styles.card}>
           <h2>Token Authentication &rarr;</h2>
@@ -41,6 +37,6 @@ export default function Home() {
           </p>
         </a>
       </div>
-    </>
+    </main>
   );
 }
