@@ -1,4 +1,9 @@
-const cardData = [
+export interface CardData {
+  id: string;
+  src: string;
+}
+
+const cardData: CardData[] = [
   {
     id: "bioinformatics",
     src: "/images/bioinformatics.png",
