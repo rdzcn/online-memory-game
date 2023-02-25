@@ -1,0 +1,24 @@
+.memory-card {
+  position: relative;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transform-origin: center right;
+  transition: transform 1s;
+}
+
+.is-flipped {
+  transform: translateX(-100%) rotateY(-180deg);
+}
+
+.card_back {
+  transform: rotateY(180deg);
+}
+
+.card_front {
+  backface-visibility: hidden;
+}
+
+.card {
+  position: absolute;
+  backface-visibility: hidden;
+}
