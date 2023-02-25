@@ -1,5 +1,7 @@
 .memory-card {
   position: relative;
+  width: 96px;
+  height: 96px;
   cursor: pointer;
   transform-style: preserve-3d;
   transform-origin: center right;
@@ -20,5 +22,7 @@
 
 .card {
   position: absolute;
+  width: 96px;
+  height: 96px;
   backface-visibility: hidden;
 }

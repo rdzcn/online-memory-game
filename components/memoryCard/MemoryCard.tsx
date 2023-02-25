@@ -10,19 +10,19 @@ const MemoryCard = ({ src, id }: { src: string; id: string }) => {
   return (
     <>
       <li
-        className={classnames(
-          `border rounded border-black p-4 ${styles["memory-card"]}`,
-          {
-            "is-flipped": isFlipped,
-          },
-        )}
+        className={classnames(`border rounded border-black p-4`)}
+        style={{ perspective: "600px" }}
         onClick={() => setIsFlipped(!isFlipped)}
       >
-        <div>
-          <div className={`card ${styles["card_back"]}`}>
+        <div
+          className={classnames(`${styles["memory-card"]}`, {
+            [`${styles["is-flipped"]}`]: isFlipped,
+          })}
+        >
+          <div className={`${styles["card"]} ${styles["card_back"]}`}>
             <Image src={src} alt={id} width={96} height={96} />
           </div>
-          <div className={`card ${styles["card_front"]}`}>
+          <div className={`${styles["card"]} ${styles["card_front"]}`}>
             <Image
               src="/images/flip.png"
               alt="placeholder"
