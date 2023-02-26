@@ -12,13 +12,15 @@ export interface GameEvent {
 export enum GameStatus {
   idle = "idle",
   one = "one",
+  two = "two",
   match = "match",
   miss = "miss",
 }
 
 export interface GameState {
   matchedCards: CardData[];
-  selectedCard: CardData | null;
+  // selectedCards: [CardData, CardData] | [CardData] | [];
+  selectedCards: any;
   status: GameStatus;
   player1Score: number;
   player2Score: number;
@@ -26,7 +28,7 @@ export interface GameState {
 
 export const initialGameState: GameState = {
   matchedCards: [],
-  selectedCard: null,
+  selectedCards: [],
   status: GameStatus.idle,
   player1Score: 0,
   player2Score: 0,
@@ -38,7 +40,7 @@ const gameReducer = (state: GameState, event: GameEvent) => {
       if (event.type === GAME_EVENTS.FLIP_CARD) {
         return {
           ...state,
-          selectedCard: event.data,
+          selectedCards: [event.data],
           status: GameStatus.one,
         };
       }
@@ -47,11 +49,20 @@ const gameReducer = (state: GameState, event: GameEvent) => {
       if (event.type === GAME_EVENTS.FLIP_CARD) {
         return {
           ...state,
-          selectedCard: null,
+          selectedCards: [...state.selectedCards, event.data],
+          status: GameStatus.two,
+        };
+      }
+      return state;
+    case "two":
+      if (event.type === GAME_EVENTS.FLIP_CARD) {
+        return {
+          ...state,
+          selectedCards: [],
           status: GameStatus.idle,
           matchedCards:
-            state.selectedCard?.id === event.data.id
-              ? [...state.matchedCards, event.data]
+            state.selectedCards[0]?.id === state.selectedCards[1]?.id
+              ? [...state.matchedCards, ...state.selectedCards]
               : [...state.matchedCards],
         };
       }

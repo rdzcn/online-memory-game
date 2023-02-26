@@ -14,21 +14,28 @@ interface MemoryCardProps {
 }
 
 const MemoryCard = ({ card, dispatch, gameState }: MemoryCardProps) => {
-  const [isFlipped, setIsFlipped] = useState(false);
-  console.log(gameState);
   return (
     <>
       <li
         className={classnames(`border rounded border-black p-4`)}
         style={{ perspective: "600px" }}
         onClick={() => {
-          setIsFlipped(!isFlipped);
           dispatch({ type: GAME_EVENTS.FLIP_CARD, data: card });
         }}
       >
         <div
           className={classnames(`${styles["memory-card"]}`, {
-            [`${styles["is-flipped"]}`]: isFlipped,
+            [`${styles["is-flipped"]}`]:
+              gameState.selectedCards.findIndex(
+                (selectedCard: CardData) =>
+                  selectedCard.id === card.id &&
+                  selectedCard.pairIndex === card.pairIndex,
+              ) !== -1 ||
+              gameState.matchedCards.findIndex(
+                (selectedCard: CardData) =>
+                  selectedCard.id === card.id &&
+                  selectedCard.pairIndex === card.pairIndex,
+              ) !== -1,
           })}
         >
           <div className={`${styles["card"]} ${styles["card_back"]}`}>

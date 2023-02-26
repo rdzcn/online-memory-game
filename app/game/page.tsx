@@ -18,12 +18,12 @@ const Game = () => {
   );
 
   useEffect(() => {
-    setMemoryCards(shuffleCards(cardData.concat(cardData)));
+    const pairedCards: CardData[] = [...cardData].map((card) => {
+      return { ...card, pairIndex: 1 };
+    });
+    setMemoryCards(shuffleCards([...cardData, ...pairedCards]));
   }, []);
-  // const memoryCards = useMemo(
-  //   () => shuffleCards(cardData.concat(cardData)),
-  //   [],
-  // );
+
   return (
     <ul className="grid grid-cols-6 gap-8 w-fit my-0 mx-auto">
       {memoryCards.map((card, index) => (
