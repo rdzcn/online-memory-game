@@ -7,7 +7,11 @@ module.exports = {
     "!./node_modules",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ["var(--font-inter)"],
+      },
+    },
   },
   plugins: [],
 };
