@@ -7,6 +7,8 @@ import { shuffleCards } from "../../utils";
 import gameReducer, {
   GameEvent,
   GameState,
+  GameStatus,
+  GAME_EVENTS,
   initialGameState,
 } from "./game.reducer";
 
@@ -16,6 +18,14 @@ const Game = () => {
     gameReducer,
     initialGameState,
   );
+
+  console.log("GAME STATE", gameState);
+
+  useEffect(() => {
+    if (gameState.status === GameStatus.idle) {
+      dispatch({ type: GAME_EVENTS.GET_READY, data: {} });
+    }
+  }, []);
 
   useEffect(() => {
     const pairedCards: CardData[] = [...cardData].map((card) => {

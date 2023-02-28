@@ -2,15 +2,17 @@ import cardData, { CardData } from "../../constants/memoryCards";
 
 export enum GAME_EVENTS {
   FLIP_CARD = "FLIP_CARD",
+  GET_READY = "GET_READY",
 }
 
 export interface GameEvent {
   type: GAME_EVENTS;
-  data: CardData;
+  data: CardData | any;
 }
 
 export enum GameStatus {
   idle = "idle",
+  ready = "ready",
   one = "one",
   two = "two",
   match = "match",
@@ -37,6 +39,14 @@ export const initialGameState: GameState = {
 const gameReducer = (state: GameState, event: GameEvent) => {
   switch (state.status) {
     case "idle":
+      if (event.type === GAME_EVENTS.GET_READY) {
+        return {
+          ...state,
+          selectedCards: [],
+          status: GameStatus.ready,
+        };
+      }
+    case "ready":
       if (event.type === GAME_EVENTS.FLIP_CARD) {
         return {
           ...state,
