@@ -25,7 +25,7 @@ const Game = () => {
     if (gameState.status === GameStatus.idle) {
       dispatch({ type: GAME_EVENTS.GET_READY, data: {} });
     }
-  }, []);
+  }, [gameState.status]);
 
   useEffect(() => {
     const pairedCards: CardData[] = [...cardData].map((card) => {
