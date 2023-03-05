@@ -1,0 +1,34 @@
+/*!*************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[3].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[3].oneOf[7].use[3]!./components/memoryCard/memoryCard.module.css ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************/
+.memoryCard_memory-card__n_6M4 {
+  position: relative;
+  width: 96px;
+  height: 96px;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transform-origin: center right;
+  transition: transform 1s;
+}
+
+.memoryCard_is-flipped__HPDs2 {
+  transform: translateX(-100%) rotateY(-180deg);
+}
+
+.memoryCard_card_back__BTjj2 {
+  transform: rotateY(180deg);
+}
+
+.memoryCard_card_front__2otjO {
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+
+.memoryCard_card__slSTq {
+  position: absolute;
+  width: 96px;
+  height: 96px;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+
