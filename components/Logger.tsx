@@ -1,32 +1,34 @@
 export class LogEntry {
-  public timestamp: Date
-  public message: string
+  public timestamp: Date;
+  public message: string;
 
   constructor(message: string) {
-    this.timestamp = new Date()
-    this.message = message
+    this.timestamp = new Date();
+    this.message = message;
   }
 }
 
 export type LoggingProps = {
-  logEntries: Array<LogEntry>
-}
+  logEntries: Array<LogEntry>;
+};
 
 export default function Logger({ logEntries }: LoggingProps) {
   return (
-    <ul>
-    {
-      // Show the newest log entry at the top
-      logEntries.sort((a: LogEntry, b: LogEntry) => {
-          return b.timestamp.getTime() - a.timestamp.getTime()
-        }).map((logEntry: LogEntry, index: number) => {
-        return (
-          <li key={index}>
-            {logEntry.timestamp.toISOString()}: {logEntry.message}
-          </li>
-        )}
-      )
-    }
+    <ul className="mt-4 divide-y">
+      {
+        // Show the newest log entry at the top
+        logEntries
+          .sort((a: LogEntry, b: LogEntry) => {
+            return b.timestamp.getTime() - a.timestamp.getTime();
+          })
+          .map((logEntry: LogEntry, index: number) => {
+            return (
+              <li key={index} className="py-5 flex items-start justify-between">
+                {logEntry.timestamp.toISOString()}: {logEntry.message}
+              </li>
+            );
+          })
+      }
     </ul>
-  )
+  );
 }

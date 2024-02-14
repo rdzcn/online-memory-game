@@ -55,13 +55,15 @@ export default function Authentication() {
       </p>
 
       <section>
-        <h3 className="text-3xl font-bold underline">
-          Connection status:{" "}
-          <span>{connectionState}</span>
+        <h3 className="text-3x mt-4 font-bold underline">
+          Connection status: <span>{connectionState}</span>
         </h3>
 
         <div>
-          <button onClick={connectionToggle}>
+          <button
+            onClick={connectionToggle}
+            className="mt-4 px-3 py-3 text-indigo-600 bg-indigo-50 rounded-lg duration-150 hover:bg-indigo-100 active:bg-indigo-200"
+          >
             {connectionState === "connected" ? "Disconnect" : "Connect"}
           </button>
         </div>
